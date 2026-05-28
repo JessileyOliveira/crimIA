@@ -16,8 +16,8 @@ export default function CaseMap() {
   if (!session) return null
 
   const nodes: MapNode[] = [
-    ...(session.characters ?? []).map((c: MapNode) => ({ ...c, type: 'character' as NodeType })),
-    ...(session.locations ?? []).map((l: MapNode) => ({ ...l, type: 'location' as NodeType })),
+    ...(session.characters ?? []).map((c) => ({ ...c, type: 'character' as NodeType })),
+    ...(session.locations ?? []).map((l) => ({ ...l, type: 'location' as NodeType })),
   ]
 
   const isUnlocked = (node: MapNode) =>

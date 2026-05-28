@@ -10,7 +10,7 @@ interface CompanionMessage {
 }
 
 export default function CompanionPanel() {
-  const { session, clues, notebookText } = useGameStore()
+  const { session } = useGameStore()
   const sessionId = session?.sessionId
   const [messages, setMessages] = useState<CompanionMessage[]>([
     {
