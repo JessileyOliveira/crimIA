@@ -60,7 +60,7 @@ export function registerSocketHandlers(
           }
 
           const dbCase = await prisma.case.findUnique({ where: { id: state.caseId } })
-          const nodes = dbCase?.nodes as CaseData['nodes']
+          const nodes = dbCase?.nodes as unknown as CaseData['nodes']
           const trigger = new TriggerEngine(nodes.characters, nodes.locations)
           const newlyUnlocked = await trigger.evaluate(
             { sessionId, nodeId, text, agentReply, unlockedNodes: state.unlockedNodes },
@@ -147,7 +147,7 @@ async function handleLocationMessage(
   }
 
   const dbCase = await prisma.case.findUnique({ where: { id: state.caseId } })
-  const nodes = dbCase?.nodes as CaseData['nodes']
+  const nodes = dbCase?.nodes as unknown as CaseData['nodes']
 
   for (const loc of nodes.locations) {
     if (state.unlockedNodes.includes(loc.id) || !loc.unlockTrigger) continue

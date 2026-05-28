@@ -35,10 +35,10 @@ export class GameSession {
       caseTitle: session.case.title,
       mode: session.mode as 'easy' | 'normal',
       unlockedNodes: (session.unlockedNodes as string[]) ?? [],
-      clues: (session.clues as Clue[]) ?? [],
+      clues: (session.clues as unknown as Clue[]) ?? [],
       notebook: session.notebook ?? '',
-      characters: (session.case.nodes as CaseData['nodes']).characters,
-      locations: (session.case.nodes as CaseData['nodes']).locations,
+      characters: (session.case.nodes as unknown as CaseData['nodes']).characters,
+      locations: (session.case.nodes as unknown as CaseData['nodes']).locations,
     }
 
     await rsetex(this.key('state'), SESSION_TTL, JSON.stringify(state))
@@ -127,7 +127,7 @@ export class GameSession {
     const caseData = await prisma.case.findUnique({ where: { id: caseId } })
     if (!caseData) throw new Error(`Case ${caseId} not found`)
 
-    const nodes = caseData.nodes as CaseData['nodes']
+    const nodes = caseData.nodes as unknown as CaseData['nodes']
     const initialUnlocked = [
       ...nodes.characters.filter((c) => c.unlocked).map((c) => c.id),
       ...nodes.locations.filter((l) => l.unlocked).map((l) => l.id),

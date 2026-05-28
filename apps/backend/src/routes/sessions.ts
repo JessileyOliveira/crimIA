@@ -11,7 +11,8 @@ import type { CaseData } from '@crimia/shared-types'
 const router = Router()
 
 function extractGroqKey(req: AuthRequest): string {
-  const key = req.headers['x-groq-api-key'] as string | undefined
+  const raw = req.headers['x-groq-api-key']
+  const key = Array.isArray(raw) ? raw[0] : raw
   return key ?? process.env.GROQ_API_KEY ?? ''
 }
 
@@ -77,7 +78,7 @@ router.post('/:id/inspect', async (req: AuthRequest, res) => {
     if (!element) return res.status(404).json({ error: 'Elemento não encontrado' })
 
     const dbCase = await prisma.case.findUnique({ where: { id: state.caseId } })
-    const masterDoc = dbCase?.masterDoc as CaseData['masterDoc']
+    const masterDoc = dbCase?.masterDoc as unknown as CaseData['masterDoc']
     const context = `Caso: ${state.caseTitle}. Suspeito: ${masterDoc?.suspect}. Local do crime: ${masterDoc?.location}.`
 
     let description: string
@@ -112,7 +113,7 @@ router.post('/:id/submit', async (req: AuthRequest, res) => {
     const dbCase = await prisma.case.findUnique({ where: { id: state.caseId } })
     if (!dbCase) return res.status(404).json({ error: 'Caso não encontrado' })
 
-    const masterDoc = dbCase.masterDoc as CaseData['masterDoc']
+    const masterDoc = dbCase.masterDoc as unknown as CaseData['masterDoc']
     const score = await evaluateTheory(masterDoc, parsed.data.theory, apiKey)
 
     await prisma.session.update({
