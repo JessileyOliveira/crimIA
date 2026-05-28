@@ -1,0 +1,224 @@
+{
+  "id": "caso_002",
+  "title": "Noite no Morro da Esperança",
+  "difficulty": "hard",
+  "description": "Toninho 'Sorte Grande', figura respeitada do morro, foi encontrado morto no beco atrás do boteco da mulher. Cinco testemunhas, um segredo enterrado fundo e a lei do silêncio pesando sobre todos.",
+  "masterDoc": {
+    "suspect": "Zé Galinha (sócio no jogo do bicho)",
+    "motive": "Toninho estava colaborando secretamente com a Polícia Federal para expor as operações de lavagem de dinheiro de Zé, que iam além do jogo do bicho. Zé descobriu e agiu antes de ser delatado.",
+    "method": "facada única nas costas com faca de cozinha do próprio boteco, encenada como assalto malsucedido",
+    "location": "Beco dos Fundos (atrás do Boteco da Fátima)",
+    "time": "23h45",
+    "details": "Zé enviou mensagem para Toninho pedindo para 'acertar as contas lá fora' às 23h30. Toninho foi sozinho, sem desconfiar do sócio. Zé desferiu a facada pelas costas, largou R$50 no chão para simular assalto e voltou ao boteco para tomar mais uma pinga e criar álibi. A faca foi lavada na pia do barracão e devolvida à cozinha antes do amanhecer."
+  },
+  "nodes": {
+    "characters": [
+      {
+        "id": "dona_fatima",
+        "name": "Dona Fátima",
+        "role": "Viúva, dona do boteco",
+        "unlocked": true,
+        "personality": "Forte, direta e protetora, mas com a voz embargada de dor. Desconfia de estranhos mas quer justiça. Não entregará ninguém sem provas concretas. Chama todos pelo apelido.",
+        "knows": [
+          "Zé Galinha foi a última pessoa a ser vista conversando com Toninho dentro do boteco",
+          "Toninho estava 'diferente' nas últimas semanas: calado, ansioso e evitava falar de dinheiro",
+          "Juninho, o sobrinho, viu algo no boteco naquela noite mas está se recusando a falar",
+          "havia uma briga séria entre Toninho e Zé sobre uma suposta dívida na semana anterior",
+          "Professora Ciça estava no boteco naquela noite, sentada perto da porta dos fundos"
+        ],
+        "hides": [
+          "ouviu Toninho combinar de encontrar Zé 'no beco' naquela noite — ela mesma passou o recado",
+          "encontrou o celular de Toninho com o histórico de mensagens apagado e destruiu o aparelho por medo"
+        ]
+      },
+      {
+        "id": "ze_galinha",
+        "name": "Zé Galinha",
+        "role": "Sócio no jogo do bicho",
+        "unlocked": false,
+        "unlockTrigger": "talked_to:dona_fatima",
+        "personality": "Calmo demais, sorri sempre e escolhe as palavras com extremo cuidado. Intimidador sem precisar ameaçar. Nega tudo com charme. Se pressionado, muda para frieza cortante.",
+        "knows": [
+          "o beco dos fundos está sem câmera desde que o sistema foi desativado dias antes",
+          "Professora Ciça estava perto da porta dos fundos naquela noite — ele sabe que ela viu",
+          "Toninho tinha uma 'dívida' registrada no caderno de apostas de R$8 mil",
+          "Nego Bala é quem controla as câmeras do morro"
+        ],
+        "hides": [
+          "foi ele quem enviou a mensagem chamando Toninho para o beco",
+          "descobriu que Toninho estava colaborando com investigadores federais através de uma fonte dentro da delegacia",
+          "lavou a faca na pia do barracão e a devolveu à cozinha antes de ir embora"
+        ]
+      },
+      {
+        "id": "professora_cica",
+        "name": "Professora Ciça",
+        "role": "Professora da escola comunitária",
+        "unlocked": false,
+        "unlockTrigger": "keyword:professora",
+        "personality": "Tímida e honesta, mas com medo real das consequências de falar. Fala devagar, pesa cada palavra. Quando se sente segura, é uma testemunha precisa e detalhista.",
+        "knows": [
+          "viu Zé Galinha sair pela porta dos fundos do boteco às 23h18 e voltar às 23h57 com o mesmo casaco",
+          "Toninho saiu pela mesma porta às 23h31, pouco depois de receber uma mensagem no celular",
+          "escutou Zé dizer para Toninho: 'a gente acerta isso lá fora, sem barulho'",
+          "anotou tudo no diário de ocorrências da escola naquela mesma noite, enquanto os fatos estavam frescos"
+        ],
+        "hides": [
+          "tem medo de Zé Galinha e só vai falar se souber que há proteção",
+          "também viu Juninho seguir Toninho com os olhos desde o balcão mas ficar parado, como se estivesse paralisado"
+        ]
+      },
+      {
+        "id": "juninho",
+        "name": "Juninho",
+        "role": "Sobrinho de Toninho, ajudante do boteco",
+        "unlocked": false,
+        "unlockTrigger": "keyword:Juninho",
+        "personality": "Nervoso, fala rápido e para no meio das frases. Olha para os lados o tempo todo. Claramente apavorado mas quer honrar o tio. Precisa de encorajamento para revelar o que sabe.",
+        "knows": [
+          "encontrou uma faca de cozinha molhada fora do lugar na pia do boteco à meia-noite",
+          "viu Zé Galinha entrar sozinho na cozinha do boteco por volta de 00h10 e mexer na pia",
+          "Toninho havia escondido um papel no fundo da gaveta do balcão — 'se algo acontecer comigo, entrega isso'"
+        ],
+        "hides": [
+          "pegou o papel do tio e escondeu no próprio barracão — contém nomes, datas e valores das operações de Zé",
+          "viu a faca suja mas ficou paralisado de medo, sem agir"
+        ]
+      },
+      {
+        "id": "nego_bala",
+        "name": "Nego Bala",
+        "role": "Segurança geral do morro",
+        "unlocked": false,
+        "unlockTrigger": "talked_to:ze_galinha",
+        "personality": "Fala pouco, pesa cada palavra. Leal por hábito, mas não idiota. Está cansado de ser usado sem saber para quê. Quando decide falar, fala a verdade sem rodeios.",
+        "knows": [
+          "foi ele quem desligou manualmente as câmeras do beco três dias antes do crime, a pedido de Zé",
+          "Zé chegou ao barracão naquela noite com uma sacola escura e lavou as mãos duas vezes na pia",
+          "há rumores no morro de que Toninho estava 'cantando para os federais' — ele ouviu de fontes confiáveis"
+        ],
+        "hides": [
+          "desligou as câmeras sem saber o real motivo — Zé disse que era para 'não registrar movimentação de dinheiro'",
+          "está considerando falar, mas precisa de garantia de que não será implicado no crime"
+        ]
+      }
+    ],
+    "locations": [
+      {
+        "id": "boteco_fatima",
+        "name": "Boteco da Fátima",
+        "description": "Um boteco de esquina com mesas de plástico branco amassadas, geladeira barulhenta e paredes cobertas de escalas de time e calendários de cerveja. O chão de cimento ainda tem a marca de onde Toninho costumava sentar. O lugar está mais silencioso que o normal — os clientes habituais evitam aparecer desde a morte.",
+        "unlocked": true,
+        "elements": [
+          {
+            "id": "gaveta_balcao",
+            "label": "Gaveta do balcão",
+            "clue": true,
+            "clueId": "gaveta_vazia",
+            "clueDescription": "A gaveta principal do balcão está estranhamente vazia. Dona Fátima confirma que Toninho guardava fichas e papéis aqui. Juninho sabe o que havia nesta gaveta.",
+            "description": "A gaveta principal do balcão, onde Toninho guardava os documentos do dia a dia. Está vazia de forma suspeita."
+          },
+          {
+            "id": "comanda_ze",
+            "label": "Comanda da mesa de Zé",
+            "clue": true,
+            "clueId": "gap_alibi",
+            "clueDescription": "A comanda mostra pedidos de Zé às 22h05 e às 00h08 — mais de duas horas sem nenhum pedido registrado, exatamente no período do crime. O álibi tem um buraco de mais de duas horas.",
+            "description": "Um papel amassado embaixo da mesa onde Zé Galinha costumava sentar. A comanda do boteco."
+          },
+          {
+            "id": "camera_interna",
+            "label": "Câmera interna do boteco",
+            "clue": true,
+            "clueId": "video_horarios",
+            "clueDescription": "A gravação interna mostra com clareza: Zé sai pela porta dos fundos às 23h18. Toninho sai às 23h31 olhando o celular. Zé retorna às 23h57, tranquilo, pede pinga. Toninho nunca voltou.",
+            "description": "Uma câmera pequena fixada no canto do teto, virada para o balcão e a porta dos fundos. A luz de gravação está acesa."
+          }
+        ]
+      },
+      {
+        "id": "beco_fundos",
+        "name": "Beco dos Fundos",
+        "description": "Um beco estreito entre o boteco e o muro do vizinho. Cheiro de óleo queimado e mato pisado. Uma lâmpada piscante ilumina mal o corredor. É aqui que Toninho foi encontrado de bruços às 00h12 por um morador que saía para trabalhar. As marcas de sangue seco ainda estão visíveis no cimento.",
+        "unlocked": false,
+        "unlockTrigger": "visited:boteco_fatima",
+        "elements": [
+          {
+            "id": "marca_sangue",
+            "label": "Mancha de sangue no chão",
+            "clue": true,
+            "clueId": "emboscada",
+            "clueDescription": "A posição e forma da mancha indicam que Toninho estava de costas para o agressor — sem sinal de luta ou defesa. Ele não esperava o ataque de quem o chamou. Era alguém de confiança.",
+            "description": "Uma mancha escura e seca no cimento. O corpo foi removido, mas o rastro permanece."
+          },
+          {
+            "id": "cedula_50",
+            "label": "Nota de R$50 no chão",
+            "clue": true,
+            "clueId": "assalto_encenado",
+            "clueDescription": "A nota de R$50 estava no chão, mas o sangue passou por baixo dela — foi colocada DEPOIS da morte. Além disso, a carteira de Toninho ainda tinha R$320 no bolso. O assalto foi uma encenação.",
+            "description": "Uma nota de cinquenta reais dobrada, próxima à mancha de sangue. Parece nova demais para ter caído ali."
+          },
+          {
+            "id": "camera_beco",
+            "label": "Câmera de segurança do beco",
+            "clue": true,
+            "clueId": "camera_sabotada",
+            "clueDescription": "A câmera foi desligada manualmente três dias antes do crime. O sistema de câmeras do morro é controlado por uma única pessoa. Quem pediu o desligamento sabia do que estava planejando.",
+            "description": "Uma câmera no alto do muro, virada para o beco. A luz vermelha de gravação está apagada."
+          }
+        ]
+      },
+      {
+        "id": "barracao_ze",
+        "name": "Barracão do Zé",
+        "description": "Um galpão nos fundos da laje de Zé Galinha, usado como depósito e escritório informal do jogo do bicho. Caixas de papelão empilhadas, cadeiras de plástico e uma mesa coberta de fichas de apostas. Cheira a cigarro e dinheiro velho. Há uma pia de concreto no canto com sinais de uso recente.",
+        "unlocked": false,
+        "unlockTrigger": "talked_to:ze_galinha",
+        "elements": [
+          {
+            "id": "pia_barracao",
+            "label": "Pia de concreto",
+            "clue": true,
+            "clueId": "sangue_ralo",
+            "clueDescription": "Vestígio de sangue humano na ranhura do ralo — invisível a olho nu, mas confirmado com luminol. Alguém lavou algo aqui com muita urgência recentemente.",
+            "description": "Uma pia de concreto no canto do barracão. O ralo parece ter sido limpo com pressa, mas mal. Um pedaço de sabão usado está ao lado."
+          },
+          {
+            "id": "caderno_apostas",
+            "label": "Caderno de apostas",
+            "clue": true,
+            "clueId": "divida_fabricada",
+            "clueDescription": "O caderno registra uma dívida de R$8.000 de Toninho com Zé. Mas as anotações próprias de Toninho, encontradas por Juninho, mostram que essa dívida foi quitada meses atrás com recibo. A dívida é fabricada — um pretexto para o encontro.",
+            "description": "Um caderno de capa preta surrado, cheio de números, nomes em código e datas."
+          }
+        ]
+      },
+      {
+        "id": "escola_comunitaria",
+        "name": "Escola Comunitária",
+        "description": "Uma sala ampla pintada de amarelo-desbotado, com carteiras infantis e desenhos nas paredes. À noite funciona como espaço do EJA. Professora Ciça passa as tardes aqui — e às vezes as noites, quando o morro está agitado demais para voltar para casa.",
+        "unlocked": false,
+        "unlockTrigger": "talked_to:professora_cica",
+        "elements": [
+          {
+            "id": "diario_cica",
+            "label": "Diário de ocorrências",
+            "clue": true,
+            "clueId": "testemunho_escrito",
+            "clueDescription": "Ciça anotou no diário da noite do crime: 'Zé saiu pelo fundo às 23h18, voltou quase meia-noite. Toninho foi atrás às 23h31 com o celular na mão. Toninho não voltou. Zé pediu pinga como se nada fosse.' Uma testemunha que documentou tudo antes de ter medo.",
+            "description": "Um caderno espiral com capa verde usado para registros do cotidiano da escola. As últimas páginas foram preenchidas recentemente."
+          },
+          {
+            "id": "mapa_morro",
+            "label": "Mapa do morro na parede",
+            "clue": true,
+            "clueId": "rota_camera",
+            "clueDescription": "O mapa artesanal do morro feito pelos alunos mostra a localização de cada câmera de segurança. O beco dos fundos é o único ponto sem câmera — e também o único ponto cego na rota entre o boteco e o barracão de Zé.",
+            "description": "Um mapa desenhado à mão pelos alunos, colado na parede. Mostra ruas, casas e pontos de referência do morro."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Case {
+  id          String    @id @default(cuid())
+  title       String
+  difficulty  String    // easy | normal | hard
+  description String    @default("")
+  masterDoc   Json      // solução completa, invisível ao jogador
+  nodes       Json      // personagens, locais, triggers
+  sessions    Session[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("cases")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  name      String
+  password  String
+  sessions  Session[]
+  createdAt DateTime  @default(now())
+
+  @@map("users")
+}
+
+model Session {
+  id             String    @id @default(cuid())
+  caseId         String
+  case           Case      @relation(fields: [caseId], references: [id])
+  userId         String?
+  user           User?     @relation(fields: [userId], references: [id])
+  unlockedNodes  Json      @default("[]")
+  clues          Json      @default("[]")
+  notebook       String    @default("")
+  mode           String    @default("normal")  // easy | normal
+  finalTheory    String?
+  score          Float?
+  scoreData      Json?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@map("sessions")
+}

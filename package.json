@@ -1,0 +1,26 @@
+{
+  "name": "crimia",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/frontend",
+    "apps/backend",
+    "packages/shared-types"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=apps/frontend\" \"npm run dev --workspace=apps/backend\"",
+    "build": "npm run build --workspace=packages/shared-types && npm run build --workspace=apps/frontend && npm run build --workspace=apps/backend",
+    "build:railway": "npm run build --workspace=packages/shared-types && npm run build --workspace=apps/frontend && npm run build --workspace=apps/backend",
+    "start:railway": "npm run start:prod --workspace=apps/backend",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "db:migrate": "npm run migrate --workspace=apps/backend",
+    "db:studio": "npm run studio --workspace=apps/backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "sonner": "^2.0.7"
+  }
+}

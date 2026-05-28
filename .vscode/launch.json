@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Backend (tsx)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/apps/backend/src/index.ts",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["tsx"],
+      "cwd": "${workspaceFolder}/apps/backend",
+      "env": { "NODE_ENV": "development" },
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Frontend (Chrome)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/apps/frontend/src"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack",
+      "configurations": ["Backend (tsx)", "Frontend (Chrome)"]
+    }
+  ]
+}

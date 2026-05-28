@@ -1,0 +1,144 @@
+{
+  "id": "caso_001",
+  "title": "A Morte na Mansão Blackwood",
+  "difficulty": "normal",
+  "description": "Lord Blackwood foi encontrado morto em sua própria mansão. Três suspeitos, uma noite de tempestade e segredos que ninguém quer revelar.",
+  "masterDoc": {
+    "suspect": "Carlos (mordomo)",
+    "motive": "herança negada no testamento — Carlos descobriu que seria removido do testamento e agiria antes da assinatura final",
+    "method": "veneno (arsênico) dissolvido no vinho do jantar",
+    "location": "Sala de Jantar",
+    "time": "22:30",
+    "details": "Carlos serviu o vinho às 22h15 e saiu discretamente. Lord Blackwood colapsou às 22h30. A taça foi trocada antes que alguém percebesse."
+  },
+  "nodes": {
+    "characters": [
+      {
+        "id": "carlos",
+        "name": "Carlos",
+        "role": "Mordomo",
+        "unlocked": true,
+        "personality": "nervoso, evasivo, excessivamente formal e educado quando pressionado",
+        "knows": [
+          "jantar foi servido às 20h",
+          "Helena discutiu com Lord Blackwood sobre dinheiro",
+          "Dr. Voss visitou o Lord na semana passada",
+          "a taça de vinho do Lord foi a última coisa que ele serviu"
+        ],
+        "hides": [
+          "saiu da sala de jantar às 22h15 sem ser visto",
+          "leu o testamento revisado e descobriu que seria removido",
+          "comprou arsênico há duas semanas para 'pragas no jardim'"
+        ]
+      },
+      {
+        "id": "helena",
+        "name": "Helena Blackwood",
+        "role": "Sobrinha",
+        "unlocked": false,
+        "unlockTrigger": "talked_to:carlos + keyword:Helena",
+        "personality": "dramática, emotiva, alterna entre choro e irritação, mas é calculista",
+        "knows": [
+          "Carlos tem acesso irrestrito à adega e à cozinha",
+          "o testamento beneficia principalmente ela",
+          "Lord Blackwood tinha pressão alta e tomava medicamentos"
+        ],
+        "hides": [
+          "discutiu sobre dívidas com o Lord horas antes da morte",
+          "tentou convencer o Lord a adiantar sua herança"
+        ]
+      },
+      {
+        "id": "dr_voss",
+        "name": "Dr. Emil Voss",
+        "role": "Médico da família",
+        "unlocked": false,
+        "unlockTrigger": "talked_to:helena + keyword:médico",
+        "personality": "frio, científico, responde com precisão clínica, incômodo com perguntas pessoais",
+        "knows": [
+          "Lord Blackwood estava com saúde debilitada mas não terminal",
+          "Carlos perguntou sobre interações medicamentosas na última visita",
+          "arsênico em pequenas doses é difícil de detectar rapidamente"
+        ],
+        "hides": [
+          "percebeu que Carlos estava muito interessado nos medicamentos do Lord",
+          "não reportou essa suspeita por medo de se envolver"
+        ]
+      }
+    ],
+    "locations": [
+      {
+        "id": "sala_jantar",
+        "name": "Sala de Jantar",
+        "description": "Uma sala imponente com lustre de cristal ainda aceso, a mesa posta para o jantar da noite. Cadeiras de mogno, talheres de prata, e o cheiro persistente de vinho no ar. A cadeira do Lord foi encontrada virada no chão. O ambiente está exatamente como foi deixado no momento do colapso.",
+        "unlocked": true,
+        "elements": [
+          {
+            "id": "taca_vinho",
+            "label": "Taça de vinho",
+            "clue": true,
+            "clueId": "residuo_veneno",
+            "clueDescription": "Resíduo cristalino no fundo da taça. Análise posterior confirmará: arsênico.",
+            "description": "A taça de cristal de Lord Blackwood, ainda com uma fina camada de sedimento."
+          },
+          {
+            "id": "cadeira_virada",
+            "label": "Cadeira virada",
+            "clue": false,
+            "description": "A cadeira do Lord caiu quando ele colapsou. Nada de incomum."
+          },
+          {
+            "id": "guardanapo",
+            "label": "Guardanapo dobrado",
+            "clue": true,
+            "clueId": "nota_testamento",
+            "clueDescription": "Um pedaço de papel amassado sob o guardanapo. Fragmento do testamento revisado com o nome 'Carlos' riscado.",
+            "description": "Guardanapo de linho fino. Algo parece estar escondido sob ele."
+          }
+        ]
+      },
+      {
+        "id": "copa",
+        "name": "Copa e Adega",
+        "description": "Uma sala estreita entre a cozinha e a sala de jantar, onde ficam os utensílios de serviço, vinhos e produtos de limpeza. Cheiro de madeira velha e álcool. Prateleiras altas, canteiros escuros. É aqui que Carlos passa grande parte do tempo preparando os serviços.",
+        "unlocked": false,
+        "unlockTrigger": "visited:sala_jantar",
+        "elements": [
+          {
+            "id": "frasco_arsenico",
+            "label": "Frasco de pó branco",
+            "clue": true,
+            "clueId": "frasco_arsenico",
+            "clueDescription": "Frasco parcialmente usado, rotulado como 'pesticida para ratos'. A quantidade restante não bate com o uso normal.",
+            "description": "Entre os produtos de limpeza, um frasco pequeno com pó branco cristalino."
+          },
+          {
+            "id": "livro_registros",
+            "label": "Livro de registros do mordomo",
+            "clue": true,
+            "clueId": "registro_ausencia",
+            "clueDescription": "O registro do serviço mostra que Carlos saiu da sala de jantar às 22h14 e retornou às 22h31 — 17 minutos sem testemunhas.",
+            "description": "O caderno onde Carlos registra cada serviço. Detalhe, meticuloso."
+          }
+        ]
+      },
+      {
+        "id": "escritorio",
+        "name": "Escritório de Lord Blackwood",
+        "description": "Uma sala forrada de estantes com livros jurídicos e de história. Mesa de carvalho maciço com papéis espalhados. Um cofre embutido na parede atrás do retrato do pai do Lord está entreaberto. A lareira foi usada recentemente — cinzas ainda quentes.",
+        "unlocked": false,
+        "unlockTrigger": "keyword:testamento",
+        "elements": [
+          {
+            "id": "testamento_original",
+            "label": "Documento no cofre",
+            "clue": true,
+            "clueId": "testamento_revisado",
+            "clueDescription": "O testamento original incluía Carlos com uma pensão vitalícia. A versão nova, assinada três dias antes da morte, remove completamente Carlos — e ele descobriu isso.",
+            "description": "O cofre está entreaberto. Documentos legais em cima da mesa."
+          }
+        ]
+      }
+    ]
+  }
+}
