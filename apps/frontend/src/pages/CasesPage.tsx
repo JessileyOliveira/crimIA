@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import type { CaseListItem } from '@crimia/shared-types'
 import { useAuthStore } from '../store/authStore'
 import { apiFetch } from '../lib/apiFetch'
+import AdBanner from '../components/AdBanner'
 
 const DIFFICULTY_LABELS: Record<string, { label: string; color: string }> = {
   easy: { label: 'Fácil', color: 'text-green-400 border-green-400/30 bg-green-400/10' },
@@ -88,6 +89,9 @@ export default function CasesPage() {
             Sair
           </button>
         </div>
+
+        {/* Ad */}
+        <AdBanner variant="horizontal" className="mb-6" />
 
         {/* Tabs */}
         <div className="flex gap-1 mb-6 border-b border-noir-700">

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import type { FinalScore } from '@crimia/shared-types'
+import AdBanner from '../components/AdBanner'
 
 type ResultData = FinalScore & { finalTheory: string | null }
 
@@ -109,6 +110,9 @@ export default function ResultPage() {
           <h3 className="font-mono text-sm text-crimson-400 uppercase tracking-widest mb-3">A Verdade do Caso</h3>
           <p className="text-slate-300 leading-relaxed font-serif italic">{result.narrative}</p>
         </div>
+
+        {/* Ad */}
+        <AdBanner variant="rectangle" className="mb-8" />
 
         {/* Actions */}
         <div className="flex gap-4">
