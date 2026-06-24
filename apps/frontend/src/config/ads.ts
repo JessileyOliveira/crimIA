@@ -7,8 +7,8 @@ export const ADSENSE_CLIENT = "ca-pub-4881546824923533"; // Publisher ID
 
 export const AD_SLOTS = {
   // Criado em AdSense → Anúncios → Por bloco de anúncios → Anúncios gráficos e de texto
-  horizontal: "XXXXXXXXXX", // formato: Leaderboard 728x90
-  rectangle: "XXXXXXXXXX", // formato: Retângulo médio 300x250
+  horizontal: "2783704298", // formato: Leaderboard 728x90
+  rectangle: "7273613648", // formato: Retângulo médio 300x250
 } as const;
 
 export type AdVariant = keyof typeof AD_SLOTS;
